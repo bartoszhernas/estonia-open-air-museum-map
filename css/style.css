@@ -147,6 +147,120 @@ body {
     filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.3));
 }
 
+/* List toggle button */
+.list-toggle {
+    position: fixed;
+    top: 100px;
+    right: 1rem;
+    z-index: 1001;
+    background: rgba(255, 248, 220, 0.95);
+    border: 2px solid #8B4513;
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #5C3D2E;
+    box-shadow: 0 2px 8px rgba(59, 47, 30, 0.2);
+    transition: background-color 0.2s;
+}
+
+.list-toggle:hover {
+    background-color: #D2B48C;
+}
+
+.list-toggle.active {
+    background-color: #5C3D2E;
+    color: #FFF8DC;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100vh;
+    background: rgba(255, 248, 220, 0.98);
+    border-left: 3px solid #8B4513;
+    z-index: 1002;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    background-color: #5C3D2E;
+    border-bottom: 3px solid #8B4513;
+}
+
+.sidebar-header h2 {
+    font-family: 'Playfair Display', serif;
+    color: #FFF8DC;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    color: #D2B48C;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0 0.3rem;
+    line-height: 1;
+}
+
+.sidebar-close:hover {
+    color: #FFF8DC;
+}
+
+.sidebar-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sidebar-item {
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid #D2B48C;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.sidebar-item:hover {
+    background-color: #f0e4c8;
+}
+
+.sidebar-item.active {
+    background-color: #D2B48C;
+}
+
+.sidebar-item h4 {
+    font-family: 'Playfair Display', serif;
+    color: #5C3D2E;
+    font-size: 0.95rem;
+    margin: 0 0 0.15rem 0;
+}
+
+.sidebar-item .item-subtitle {
+    font-size: 0.8rem;
+    color: #8B7355;
+    margin: 0;
+}
+
+.sidebar-item .item-meta {
+    font-size: 0.78rem;
+    color: #6B5744;
+    margin-top: 0.2rem;
+}
+
 /* Warm filter on map tiles */
 .leaflet-tile-pane {
     filter: sepia(15%) saturate(90%) brightness(102%);
@@ -183,5 +297,14 @@ body {
 
     .building-popup h3 {
         font-size: 1rem;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .list-toggle {
+        top: 80px;
+        right: 0.8rem;
     }
 }

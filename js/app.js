@@ -54,11 +54,27 @@ document.addEventListener('DOMContentLoaded', function () {
         "soldier's homestead": "Soldier's Homestead"
     };
 
+    // Sidebar elements
+    const sidebar = document.getElementById('sidebar');
+    const sidebarList = document.getElementById('sidebarList');
+    const listToggle = document.getElementById('listToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    function toggleSidebar() {
+        sidebar.classList.toggle('open');
+        listToggle.classList.toggle('active');
+    }
+
+    listToggle.addEventListener('click', toggleSidebar);
+    sidebarClose.addEventListener('click', toggleSidebar);
+
     // Load building data
     fetch('data/buildings.json')
         .then(response => response.json())
         .then(buildings => {
-            buildings.forEach(building => {
+            const markers = [];
+
+            buildings.forEach((building, index) => {
                 const typeLabel = typeLabels[building.type] || building.type;
                 const popupContent = `
                     <div class="building-popup">
@@ -75,9 +91,37 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 `;
 
-                L.marker([building.lat, building.lng], { icon: houseIcon })
+                const marker = L.marker([building.lat, building.lng], { icon: houseIcon })
                     .addTo(map)
                     .bindPopup(popupContent, { maxWidth: 300 });
+
+                markers.push(marker);
+
+                // Build sidebar list item
+                const item = document.createElement('div');
+                item.className = 'sidebar-item';
+                item.innerHTML = `
+                    <h4>${building.name}</h4>
+                    <p class="item-subtitle">${building.nameEn}</p>
+                    <p class="item-meta">${typeLabel} &middot; ${building.county}</p>
+                `;
+                item.addEventListener('click', function () {
+                    // Remove active from all items
+                    sidebarList.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Pan to marker and open popup
+                    map.setView([building.lat, building.lng], 10, { animate: true });
+                    marker.openPopup();
+
+                    // Close sidebar on mobile
+                    if (window.innerWidth <= 600) {
+                        sidebar.classList.remove('open');
+                        listToggle.classList.remove('active');
+                    }
+                });
+
+                sidebarList.appendChild(item);
             });
         });
 
