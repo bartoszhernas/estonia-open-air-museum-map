@@ -73,19 +73,45 @@ document.addEventListener('DOMContentLoaded', function () {
             museumDesc: 'Rocca al Mare, Tallinn — wo alle diese Gebäude heute gemeinsam stehen.',
             linked: 'verbunden',
             pageTitle: 'Estnisches Freilichtmuseum — Woher die Gebäude stammen'
+        },
+        fr: {
+            title: 'Musée en plein air d\'Estonie',
+            subtitle: 'D\'où viennent les bâtiments',
+            buildings: 'Bâtiments',
+            legendFarm: 'Ferme / habitation',
+            legendOther: 'Autre bâtiment (moulin, chapelle, école...)',
+            legendSub: 'Dépendance (liée à une ferme)',
+            legendLine: 'Bâtiments réunis de différents villages',
+            legendMuseum: 'Musée en plein air (Tallinn)',
+            type: 'Type',
+            built: 'Construit',
+            from: 'Origine',
+            county: 'Comté',
+            viewMuseum: 'Voir sur le site du musée',
+            viewFarm: 'Voir la ferme sur le site du musée',
+            visitMuseum: 'Visiter le site du musée',
+            partOf: 'Fait partie de',
+            relocatedTo: 'Se trouvait ici à l\'origine, puis a été déplacé au musée pour former l\'exposition',
+            exhibitAt: 'avec des bâtiments d\'autres villages.',
+            museumDesc: 'Rocca al Mare, Tallinn — où tous ces bâtiments se trouvent aujourd\'hui réunis.',
+            linked: 'liés',
+            region: 'Région',
+            pageTitle: 'Musée en plein air d\'Estonie — D\'où viennent les bâtiments'
         }
     };
 
     const langFlags = {
         en: '🇬🇧',
         et: '🇪🇪',
-        de: '🇩🇪'
+        de: '🇩🇪',
+        fr: '🇫🇷'
     };
 
     const langNames = {
         en: 'English',
         et: 'Eesti',
-        de: 'Deutsch'
+        de: 'Deutsch',
+        fr: 'Français'
     };
 
     // Type labels per language
@@ -122,6 +148,17 @@ document.addEventListener('DOMContentLoaded', function () {
             'tenant farm': 'Pachthof', 'prayer house': 'Bethaus',
             'fishing house': 'Fischerhaus', dwelling: 'Wohnhaus',
             'apartment building': 'Wohnblock', "soldier's homestead": "Soldatenhof"
+        },
+        fr: {
+            chapel: 'Chapelle', inn: 'Auberge', farmhouse: 'Ferme',
+            'cotter dwelling': 'Logement de métayer', "blacksmith's farm": "Ferme du forgeron",
+            "cotter's farm": "Ferme de métayer", "fisherman's farm": "Ferme de pêcheur",
+            'post windmill': 'Moulin à pivot', watermill: 'Moulin à eau',
+            'Dutch-type windmill': 'Moulin hollandais', school: 'École',
+            'fire station': 'Caserne de pompiers', shop: 'Épicerie de village',
+            'tenant farm': 'Ferme locataire', 'prayer house': 'Maison de prière',
+            'fishing house': 'Maison de pêche', dwelling: 'Habitation',
+            'apartment building': 'Immeuble', "soldier's homestead": "Domaine de soldat"
         }
     };
 
@@ -190,7 +227,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const regionLabelNames = {
         en: { northern: 'Northern Estonia', southern: 'Southern Estonia', western: 'Western Estonia', islands: 'Islands' },
         et: { northern: 'Põhja-Eesti', southern: 'Lõuna-Eesti', western: 'Lääne-Eesti', islands: 'Saared' },
-        de: { northern: 'Nordestland', southern: 'Südestland', western: 'Westestland', islands: 'Inseln' }
+        de: { northern: 'Nordestland', southern: 'Südestland', western: 'Westestland', islands: 'Inseln' },
+        fr: { northern: 'Estonie du Nord', southern: 'Estonie du Sud', western: 'Estonie de l\'Ouest', islands: 'Îles' }
     };
 
     // Draw region labels (permanent, re-created on language switch)
