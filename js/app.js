@@ -47,9 +47,43 @@ document.addEventListener('DOMContentLoaded', function () {
             exhibitAt: 'ekspositsiooniga.',
             museumDesc: 'Rocca al Mare, Tallinn — kus kõik need hooned nüüd koos seisavad.',
             linked: 'seotud',
-            langLabel: 'EN',
             pageTitle: 'Eesti Vabaõhumuuseum — Kust hooned pärit on'
+        },
+        de: {
+            title: 'Estnisches Freilichtmuseum',
+            subtitle: 'Woher die Gebäude stammen',
+            buildings: 'Gebäude',
+            legendFarm: 'Bauernhof / Wohnhaus',
+            legendOther: 'Anderes Gebäude (Mühle, Kapelle, Schule...)',
+            legendSub: 'Nebengebäude (zu einem Hof gehörend)',
+            legendLine: 'Gleiche Hofanlage',
+            legendMuseum: 'Freilichtmuseum (Tallinn)',
+            type: 'Typ',
+            built: 'Erbaut',
+            from: 'Herkunft',
+            county: 'Kreis',
+            viewMuseum: 'Auf der Museumsseite ansehen',
+            viewFarm: 'Hof auf der Museumsseite ansehen',
+            visitMuseum: 'Museumswebseite besuchen',
+            partOf: 'Teil von',
+            relocatedTo: 'Dieses Gebäude wurde umgesiedelt, um sich der',
+            exhibitAt: 'Ausstellung im Museum anzuschließen.',
+            museumDesc: 'Rocca al Mare, Tallinn — wo alle diese Gebäude heute gemeinsam stehen.',
+            linked: 'verbunden',
+            pageTitle: 'Estnisches Freilichtmuseum — Woher die Gebäude stammen'
         }
+    };
+
+    const langFlags = {
+        en: '🇬🇧',
+        et: '🇪🇪',
+        de: '🇩🇪'
+    };
+
+    const langNames = {
+        en: 'English',
+        et: 'Eesti',
+        de: 'Deutsch'
     };
 
     // Type labels per language
@@ -75,6 +109,17 @@ document.addEventListener('DOMContentLoaded', function () {
             'tenant farm': 'Renditalu', 'prayer house': 'Palvemaja',
             'fishing house': 'Kalurielamu', dwelling: 'Elamu',
             'apartment building': 'Korterelamu', "soldier's homestead": "Soldatitalu"
+        },
+        de: {
+            chapel: 'Kapelle', inn: 'Gasthof', farmhouse: 'Bauernhaus',
+            'cotter dwelling': 'Häuslerwohnung', "blacksmith's farm": "Schmiedehof",
+            "cotter's farm": "Häuslerhof", "fisherman's farm": "Fischerhof",
+            'post windmill': 'Bockwindmühle', watermill: 'Wassermühle',
+            'Dutch-type windmill': 'Holländerwindmühle', school: 'Schule',
+            'fire station': 'Feuerwehrhaus', shop: 'Dorfladen',
+            'tenant farm': 'Pachthof', 'prayer house': 'Bethaus',
+            'fishing house': 'Fischerhaus', dwelling: 'Wohnhaus',
+            'apartment building': 'Wohnblock', "soldier's homestead": "Soldatenhof"
         }
     };
 
@@ -87,9 +132,28 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('[data-i18n]').forEach(el => {
             el.textContent = t(el.dataset.i18n);
         });
-        document.getElementById('langToggle').querySelector('.lang-flag').textContent = t('langLabel');
+        document.getElementById('currentLang').textContent = langFlags[currentLang] + ' ' + langNames[currentLang];
         document.title = t('pageTitle');
         document.documentElement.lang = currentLang;
+
+        // Update dropdown options
+        const dropdown = document.getElementById('langDropdown');
+        dropdown.innerHTML = '';
+        Object.keys(translations).forEach(lang => {
+            if (lang === currentLang) return;
+            const option = document.createElement('button');
+            option.className = 'lang-option';
+            option.textContent = langFlags[lang] + ' ' + langNames[lang];
+            option.addEventListener('click', function (e) {
+                e.stopPropagation();
+                currentLang = lang;
+                localStorage.setItem('lang', currentLang);
+                dropdown.classList.remove('open');
+                updateStaticUI();
+                if (buildingsData) renderBuildings();
+            });
+            dropdown.appendChild(option);
+        });
     }
     const map = L.map('map', {
         center: [58.6, 25.0],
@@ -289,12 +353,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Language toggle
+    // Language dropdown toggle
+    const langSelector = document.querySelector('.lang-selector');
+    const langDropdown = document.getElementById('langDropdown');
+
+    langSelector.addEventListener('click', function (e) {
+        e.stopPropagation();
+    });
+
     document.getElementById('langToggle').addEventListener('click', function () {
-        currentLang = currentLang === 'en' ? 'et' : 'en';
-        localStorage.setItem('lang', currentLang);
-        updateStaticUI();
-        if (buildingsData) renderBuildings();
+        langDropdown.classList.toggle('open');
+    });
+
+    // Close dropdown when clicking elsewhere
+    document.addEventListener('click', function () {
+        langDropdown.classList.remove('open');
     });
 
     // Initial UI
