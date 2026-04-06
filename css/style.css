@@ -24,7 +24,7 @@ body {
 
 .site-header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #FFF8DC;
     letter-spacing: 0.02em;
 }
@@ -133,7 +133,7 @@ body {
 .building-popup h3 {
     font-family: 'Playfair Display', serif;
     color: #5C3D2E;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     margin-bottom: 0.15rem;
 }
 
@@ -154,7 +154,7 @@ body {
 }
 
 .building-popup .description {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin: 0.5rem 0;
     color: #3B2F1E;
 }
@@ -385,6 +385,25 @@ body {
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+/* Region labels */
+.region-label {
+    background: none !important;
+    border: none !important;
+    white-space: nowrap;
+}
+
+.region-label span {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-style: italic;
+    background: rgba(255, 248, 220, 0.7);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    border: 1.5px solid;
+    letter-spacing: 0.05em;
 }
 
 /* Warm filter on map tiles */

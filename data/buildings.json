@@ -9,7 +9,8 @@
     "lng": 23.5856,
     "yearBuilt": "1699 (mentioned as early as 1627)",
     "description": "One of the oldest wooden buildings in Estonia. A wooden chapel from the Estonian Swedish (rannarootslased) settlement area, reconsecrated in 1989 and still used for sermons on major holy days.",
-    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/sutlepa-chapel"
+    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/sutlepa-chapel",
+    "region": "standalone"
   },
   {
     "name": "Kolu korts",
@@ -21,7 +22,8 @@
     "lng": 25.0592,
     "yearBuilt": "1840s",
     "description": "A historic roadside inn on the Tallinn-Tartu road. Now serves traditional Estonian meals to museum visitors, offering a taste of 19th-century travel culture.",
-    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/kolu-inn"
+    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/kolu-inn",
+    "region": "standalone"
   },
   {
     "name": "Sassi-Jaani talu",
@@ -47,7 +49,8 @@
         "lat": 59.05,
         "lng": 24.15
       }
-    ]
+    ],
+    "region": "western"
   },
   {
     "name": "Kostriaseme talu",
@@ -85,7 +88,8 @@
         "lat": 59.172,
         "lng": 24.12
       }
-    ]
+    ],
+    "region": "western"
   },
   {
     "name": "Nuki talu",
@@ -97,7 +101,8 @@
     "lng": 23.6658,
     "yearBuilt": "1880-1890",
     "description": "A smokehouse-type cotter dwelling from Western Estonia, representing the living conditions of landless rural workers in the late 19th century.",
-    "museumLink": "https://evm.ee/exhibition/western-estonia/nuki-farm"
+    "museumLink": "https://evm.ee/exhibition/western-estonia/nuki-farm",
+    "region": "western"
   },
   {
     "name": "Harjapea talu (Kutsari-Harjapea)",
@@ -129,7 +134,8 @@
         "lat": 59.45,
         "lng": 26.733
       }
-    ]
+    ],
+    "region": "northern"
   },
   {
     "name": "Pulga talu",
@@ -173,7 +179,8 @@
         "lat": 59.438,
         "lng": 25.513
       }
-    ]
+    ],
+    "region": "northern"
   },
   {
     "name": "Aarte talu",
@@ -193,7 +200,8 @@
         "lat": 59.58,
         "lng": 26.1
       }
-    ]
+    ],
+    "region": "northern"
   },
   {
     "name": "Sepa talu",
@@ -205,7 +213,8 @@
     "lng": 27.0953,
     "yearBuilt": "1880s-1890s",
     "description": "A blacksmith's household with about 10 hectares of poor soil, where smithcraft was the main income. Belonged to Peep Harak, a former blacksmith of Sanna manor.",
-    "museumLink": "https://evm.ee/exhibition/southern-estonia/sepa-farm"
+    "museumLink": "https://evm.ee/exhibition/southern-estonia/sepa-farm",
+    "region": "southern"
   },
   {
     "name": "Ritsu talu",
@@ -217,7 +226,8 @@
     "lng": 25.7811,
     "yearBuilt": "1860s",
     "description": "A cotter's household representing the poorest segment of rural Estonian society. The barn-dwelling was built in the 1860s and transferred to the museum in 1966.",
-    "museumLink": "https://evm.ee/exhibition/southern-estonia/ritsu-farm"
+    "museumLink": "https://evm.ee/exhibition/southern-estonia/ritsu-farm",
+    "region": "southern"
   },
   {
     "name": "Rusi talu",
@@ -237,7 +247,8 @@
         "lat": 57.829,
         "lng": 26.575
       }
-    ]
+    ],
+    "region": "southern"
   },
   {
     "name": "Setu talu (Vanatalo)",
@@ -249,7 +260,8 @@
     "lng": 27.85,
     "yearBuilt": "Last quarter of 19th century",
     "description": "A fortified Setu farm with a distinctive three-row yard layout typical of eastern Setomaa. The dwelling and storehouse were brought to the museum in 1979 from territory now in Russia.",
-    "museumLink": "https://evm.ee/exhibition/southern-estonia/setu-farm"
+    "museumLink": "https://evm.ee/exhibition/southern-estonia/setu-farm",
+    "region": "southern"
   },
   {
     "name": "Natsi tuulik",
@@ -261,7 +273,8 @@
     "lng": 24.0727,
     "yearBuilt": "Second half of 19th century",
     "description": "A large post windmill originally from Rabavere village, later sold to Natsi village. Enlarged by cotter Ants Kummel after WWI to grind flour for surrounding villages.",
-    "museumLink": "https://evm.ee/exhibition/western-estonia/natsi-windmill"
+    "museumLink": "https://evm.ee/exhibition/western-estonia/natsi-windmill",
+    "region": "western"
   },
   {
     "name": "Kahala vesiveski",
@@ -273,7 +286,8 @@
     "lng": 25.5072,
     "yearBuilt": "19th century",
     "description": "A small watermill built on Liiva spring, one of four watermills belonging to Kolga manor. Used to grind flour, rye coarse meal, gruel, and groats.",
-    "museumLink": "https://evm.ee/exhibition/northern-estonia/kahala-watermill"
+    "museumLink": "https://evm.ee/exhibition/northern-estonia/kahala-watermill",
+    "region": "northern"
   },
   {
     "name": "Kalma tuulik",
@@ -285,7 +299,8 @@
     "lng": 26.702,
     "yearBuilt": "1897",
     "description": "A Dutch-type windmill with a cap-like rotating roof, built by Mustvee mill builder Jakob Sober for owner Juhan Sark. Brought to the museum in 1972 and rebuilt 1991-1995.",
-    "museumLink": "https://evm.ee/exhibition/southern-estonia/kalma-windmill"
+    "museumLink": "https://evm.ee/exhibition/southern-estonia/kalma-windmill",
+    "region": "southern"
   },
   {
     "name": "Kuie koolimaja",
@@ -297,7 +312,8 @@
     "lng": 26.0557,
     "yearBuilt": "1887",
     "description": "A rural parish school building relocated with help from the founders of Rocca al Mare school. Now serves as the museum's educational center, opened on September 1, 2000.",
-    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/kuie-school-building"
+    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/kuie-school-building",
+    "region": "standalone"
   },
   {
     "name": "Orgmetsa tuletornipritsunemaja",
@@ -309,7 +325,8 @@
     "lng": 25.783,
     "yearBuilt": "1928",
     "description": "A medium-sized volunteer firefighters' station from the Aravete-Albu firefighters' society (founded 1921). Contains manual fire engines, carts, barrels, hoses, and a bell tower.",
-    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/orgmetsa-fire-station"
+    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/orgmetsa-fire-station",
+    "region": "standalone"
   },
   {
     "name": "Lau kylapood",
@@ -321,7 +338,8 @@
     "lng": 24.9786,
     "yearBuilt": "1914",
     "description": "A village shop built by distiller Jaan Meiberg from Ingliste manor. The exhibition depicts the shop as it would have looked in 1938, a prosperous era of Estonian economy.",
-    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/lau-village-shop"
+    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/lau-village-shop",
+    "region": "standalone"
   },
   {
     "name": "Roosta talu",
@@ -353,7 +371,8 @@
         "lat": 58.511,
         "lng": 22.212
       }
-    ]
+    ],
+    "region": "islands"
   },
   {
     "name": "Juri-Jaagu talu",
@@ -391,7 +410,8 @@
         "lat": 58.628,
         "lng": 23.242
       }
-    ]
+    ],
+    "region": "islands"
   },
   {
     "name": "Kolga talu",
@@ -429,7 +449,8 @@
         "lat": 58.883,
         "lng": 23.017
       }
-    ]
+    ],
+    "region": "islands"
   },
   {
     "name": "Vennastekoguduse palvemaja",
@@ -441,7 +462,8 @@
     "lng": 22.387,
     "yearBuilt": "1780",
     "description": "A Moravian Brethren prayer house, unique for having a black kitchen (uncommon in Estonia). The Moravian movement arrived in Estonia around 1730.",
-    "museumLink": "https://evm.ee/exhibition/the-islands/moravian-church-prayer-house"
+    "museumLink": "https://evm.ee/exhibition/the-islands/moravian-church-prayer-house",
+    "region": "islands"
   },
   {
     "name": "Hiiumaa randpuusekalaehoone",
@@ -453,7 +475,8 @@
     "lng": 24.13,
     "yearBuilt": "Late 19th century",
     "description": "A temporary shelter built by Audru manor for Hiiumaa fishermen during the Baltic herring season. Was set on fire by an arsonist during the 1991 August putsch and later restored.",
-    "museumLink": "https://evm.ee/exhibition/the-islands/hiiumaa-itinerant-fishing-house"
+    "museumLink": "https://evm.ee/exhibition/the-islands/hiiumaa-itinerant-fishing-house",
+    "region": "islands"
   },
   {
     "name": "Peipsimaa vene maja (Petshonkini maja)",
@@ -465,7 +488,8 @@
     "lng": 27.1616,
     "yearBuilt": "1863",
     "description": "A dwelling from the Russian Old Believer settlement on the western shore of Lake Peipus. These communities were founded by Old Believers who fled Russia after the 18th-century Orthodox Church schism.",
-    "museumLink": "https://evm.ee/exhibition/southern-estonia/russian-house-from-peipus"
+    "museumLink": "https://evm.ee/exhibition/southern-estonia/russian-house-from-peipus",
+    "region": "southern"
   },
   {
     "name": "Kolhoosi korterelamu",
@@ -477,7 +501,8 @@
     "lng": 26.4383,
     "yearBuilt": "1964",
     "description": "A four-unit Soviet-era silicate brick apartment house built for dairy barn workers. Transported 200 km to the museum in 2019, it depicts rural life from the 1960s through the 2010s.",
-    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/kolkhoz-apartment-building"
+    "museumLink": "https://evm.ee/exhibition/stand-alone-objects/kolkhoz-apartment-building",
+    "region": "standalone"
   },
   {
     "name": "Jaagu talu",
@@ -515,6 +540,7 @@
         "lat": 58.628,
         "lng": 23.242
       }
-    ]
+    ],
+    "region": "islands"
   }
 ]

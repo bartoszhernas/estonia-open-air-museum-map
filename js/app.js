@@ -23,7 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
             exhibitAt: 'exhibit together with buildings from other villages.',
             museumDesc: 'Rocca al Mare, Tallinn — where all these buildings now stand together.',
             linked: 'linked',
-            langLabel: 'ET',
+            region: 'Region',
+            regionNorthern: 'Northern Estonia', regionSouthern: 'Southern Estonia',
+            regionWestern: 'Western Estonia', regionIslands: 'Islands', regionStandalone: 'Stand-alone',
             pageTitle: 'Estonian Open Air Museum — Where They Came From'
         },
         et: {
@@ -168,45 +170,95 @@ document.addEventListener('DOMContentLoaded', function () {
         maxZoom: 19
     }).addTo(map);
 
-    // Main building icon (farmhouses/dwellings)
-    const houseIcon = L.divIcon({
-        className: 'house-marker',
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 40" width="28" height="35">
-            <path d="M16 2 L2 16 L6 16 L6 36 L26 36 L26 16 L30 16 Z" fill="#8B4513" stroke="#5C3D2E" stroke-width="1.5"/>
-            <rect x="12" y="22" width="8" height="14" fill="#D2B48C" stroke="#5C3D2E" stroke-width="1"/>
-            <rect x="9" y="18" width="5" height="5" fill="#FFF8DC" stroke="#5C3D2E" stroke-width="0.8"/>
-            <rect x="18" y="18" width="5" height="5" fill="#FFF8DC" stroke="#5C3D2E" stroke-width="0.8"/>
-        </svg>`,
-        iconSize: [28, 35],
-        iconAnchor: [14, 35],
-        popupAnchor: [0, -35]
-    });
+    // Region colors and data
+    const regionColors = {
+        northern: '#4A90D9',
+        southern: '#E07B39',
+        western: '#5BA55B',
+        islands: '#9B59B6',
+        standalone: '#8B7355'
+    };
 
-    // Other building icon (mills, chapel, school, shop, etc.)
-    const otherIcon = L.divIcon({
-        className: 'other-marker',
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="20" height="27">
-            <circle cx="12" cy="12" r="10" fill="#C4956A" stroke="#8B6914" stroke-width="1.5"/>
-            <circle cx="12" cy="12" r="4" fill="#FFF8DC"/>
-            <line x1="12" y1="22" x2="12" y2="30" stroke="#8B6914" stroke-width="2"/>
-        </svg>`,
-        iconSize: [20, 27],
-        iconAnchor: [10, 27],
-        popupAnchor: [0, -27]
-    });
+    // Region labels placed on map
+    const regionLabelPositions = {
+        northern: [59.35, 25.8],
+        southern: [58.0, 26.5],
+        western: [58.7, 24.0],
+        islands: [58.4, 22.5]
+    };
 
-    // Sub-building icon (smaller, lighter — part of a farm group)
-    const subIcon = L.divIcon({
-        className: 'sub-marker',
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="14" height="19">
-            <circle cx="9" cy="9" r="7" fill="#D4A76A" stroke="#A67B3D" stroke-width="1.2"/>
-            <circle cx="9" cy="9" r="2.5" fill="#FFF8DC"/>
-            <line x1="9" y1="16" x2="9" y2="22" stroke="#A67B3D" stroke-width="1.5"/>
-        </svg>`,
-        iconSize: [14, 19],
-        iconAnchor: [7, 19],
-        popupAnchor: [0, -19]
-    });
+    const regionLabelNames = {
+        en: { northern: 'Northern Estonia', southern: 'Southern Estonia', western: 'Western Estonia', islands: 'Islands' },
+        et: { northern: 'Põhja-Eesti', southern: 'Lõuna-Eesti', western: 'Lääne-Eesti', islands: 'Saared' },
+        de: { northern: 'Nordestland', southern: 'Südestland', western: 'Westestland', islands: 'Inseln' }
+    };
+
+    // Draw region labels (permanent, re-created on language switch)
+    let regionLabelLayers = [];
+
+    function renderRegionLabels() {
+        regionLabelLayers.forEach(l => map.removeLayer(l));
+        regionLabelLayers = [];
+
+        Object.entries(regionLabelPositions).forEach(([region, pos]) => {
+            const color = regionColors[region];
+            const name = regionLabelNames[currentLang][region];
+            const label = L.marker(pos, {
+                icon: L.divIcon({
+                    className: 'region-label',
+                    html: `<span style="color: ${color}; border-color: ${color}">${name}</span>`,
+                    iconSize: [120, 24],
+                    iconAnchor: [60, 12]
+                }),
+                interactive: false
+            }).addTo(map);
+            regionLabelLayers.push(label);
+        });
+    }
+
+    // Icon generators with region-colored borders
+    function makeHouseIcon(regionColor) {
+        return L.divIcon({
+            className: 'house-marker',
+            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 40" width="28" height="35">
+                <path d="M16 2 L2 16 L6 16 L6 36 L26 36 L26 16 L30 16 Z" fill="#8B4513" stroke="${regionColor}" stroke-width="2.5"/>
+                <rect x="12" y="22" width="8" height="14" fill="#D2B48C" stroke="#5C3D2E" stroke-width="1"/>
+                <rect x="9" y="18" width="5" height="5" fill="#FFF8DC" stroke="#5C3D2E" stroke-width="0.8"/>
+                <rect x="18" y="18" width="5" height="5" fill="#FFF8DC" stroke="#5C3D2E" stroke-width="0.8"/>
+            </svg>`,
+            iconSize: [28, 35],
+            iconAnchor: [14, 35],
+            popupAnchor: [0, -35]
+        });
+    }
+
+    function makeOtherIcon(regionColor) {
+        return L.divIcon({
+            className: 'other-marker',
+            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="20" height="27">
+                <circle cx="12" cy="12" r="10" fill="#C4956A" stroke="${regionColor}" stroke-width="2.5"/>
+                <circle cx="12" cy="12" r="4" fill="#FFF8DC"/>
+                <line x1="12" y1="22" x2="12" y2="30" stroke="${regionColor}" stroke-width="2"/>
+            </svg>`,
+            iconSize: [20, 27],
+            iconAnchor: [10, 27],
+            popupAnchor: [0, -27]
+        });
+    }
+
+    function makeSubIcon(regionColor) {
+        return L.divIcon({
+            className: 'sub-marker',
+            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="14" height="19">
+                <circle cx="9" cy="9" r="7" fill="#D4A76A" stroke="${regionColor}" stroke-width="1.5"/>
+                <circle cx="9" cy="9" r="2.5" fill="#FFF8DC"/>
+                <line x1="9" y1="16" x2="9" y2="22" stroke="${regionColor}" stroke-width="1.5"/>
+            </svg>`,
+            iconSize: [14, 19],
+            iconAnchor: [7, 19],
+            popupAnchor: [0, -19]
+        });
+    }
 
     // Types that are main buildings (farmer's house / dwelling)
     const mainBuildingTypes = new Set([
@@ -256,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderBuildings() {
         clearMapLayers();
         sidebarList.innerHTML = '';
+        renderRegionLabels();
 
         // Museum marker
         const museumMarker = L.marker([59.4312, 24.6354], { icon: museumIcon })
@@ -291,7 +344,8 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
 
             const isMain = mainBuildingTypes.has(building.type);
-            const marker = L.marker([building.lat, building.lng], { icon: isMain ? houseIcon : otherIcon })
+            const rColor = regionColors[building.region] || regionColors.standalone;
+            const marker = L.marker([building.lat, building.lng], { icon: isMain ? makeHouseIcon(rColor) : makeOtherIcon(rColor) })
                 .addTo(map)
                 .bindPopup(popupContent, { maxWidth: 300, autoPanPaddingTopLeft: [50, 10], autoPanPaddingBottomRight: [50, 10] });
             mapLayers.push(marker);
@@ -301,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 building.subBuildings.forEach(sub => {
                     const line = L.polyline(
                         [[building.lat, building.lng], [sub.lat, sub.lng]],
-                        { color: '#8B4513', weight: 2, opacity: 0.5, dashArray: '6, 8' }
+                        { color: rColor, weight: 2, opacity: 0.5, dashArray: '6, 8' }
                     ).addTo(map);
                     mapLayers.push(line);
 
@@ -317,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     `;
 
-                    const subMarker = L.marker([sub.lat, sub.lng], { icon: subIcon })
+                    const subMarker = L.marker([sub.lat, sub.lng], { icon: makeSubIcon(rColor) })
                         .addTo(map)
                         .bindPopup(subPopup, { maxWidth: 280, autoPanPaddingTopLeft: [50, 10], autoPanPaddingBottomRight: [50, 10] });
                     mapLayers.push(subMarker);
