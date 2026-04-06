@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
         minZoom: 6,
         maxZoom: 15,
         maxBounds: [
-            [56.5, 20.5],
-            [60.0, 29.0]
+            [56.0, 20.0],
+            [61.0, 29.5]
         ],
-        maxBoundsViscosity: 1.0
+        maxBoundsViscosity: 0.8
     });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
