@@ -220,43 +220,57 @@ document.addEventListener('DOMContentLoaded', function () {
     function makeHouseIcon(regionColor) {
         return L.divIcon({
             className: 'house-marker',
-            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 40" width="28" height="35">
-                <path d="M16 2 L2 16 L6 16 L6 36 L26 36 L26 16 L30 16 Z" fill="#8B4513" stroke="${regionColor}" stroke-width="2.5"/>
-                <rect x="12" y="22" width="8" height="14" fill="#D2B48C" stroke="#5C3D2E" stroke-width="1"/>
-                <rect x="9" y="18" width="5" height="5" fill="#FFF8DC" stroke="#5C3D2E" stroke-width="0.8"/>
-                <rect x="18" y="18" width="5" height="5" fill="#FFF8DC" stroke="#5C3D2E" stroke-width="0.8"/>
+            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 38" width="26" height="33">
+                <defs>
+                    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0.5" dy="1" stdDeviation="1" flood-opacity="0.25"/>
+                    </filter>
+                </defs>
+                <g filter="url(#s)">
+                    <path d="M15 3 L3 14 L3 34 L27 34 L27 14 Z" fill="#F5E6D0" stroke="${regionColor}" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M15 3 L3 14 L27 14 Z" fill="${regionColor}" opacity="0.25"/>
+                    <line x1="15" y1="3" x2="15" y2="14" stroke="${regionColor}" stroke-width="0.8" opacity="0.4"/>
+                    <rect x="11" y="24" width="8" height="10" rx="0.5" fill="${regionColor}" opacity="0.3"/>
+                </g>
             </svg>`,
-            iconSize: [28, 35],
-            iconAnchor: [14, 35],
-            popupAnchor: [0, -35]
+            iconSize: [26, 33],
+            iconAnchor: [13, 33],
+            popupAnchor: [0, -33]
         });
     }
 
     function makeOtherIcon(regionColor) {
         return L.divIcon({
             className: 'other-marker',
-            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="20" height="27">
-                <circle cx="12" cy="12" r="10" fill="#C4956A" stroke="${regionColor}" stroke-width="2.5"/>
-                <circle cx="12" cy="12" r="4" fill="#FFF8DC"/>
-                <line x1="12" y1="22" x2="12" y2="30" stroke="${regionColor}" stroke-width="2"/>
+            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 30" width="18" height="25">
+                <defs>
+                    <filter id="s2" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0.5" dy="1" stdDeviation="0.8" flood-opacity="0.2"/>
+                    </filter>
+                </defs>
+                <g filter="url(#s2)">
+                    <circle cx="11" cy="11" r="9" fill="#F5E6D0" stroke="${regionColor}" stroke-width="2"/>
+                    <circle cx="11" cy="11" r="3.5" fill="${regionColor}" opacity="0.35"/>
+                    <line x1="11" y1="20" x2="11" y2="28" stroke="${regionColor}" stroke-width="1.5" stroke-linecap="round"/>
+                </g>
             </svg>`,
-            iconSize: [20, 27],
-            iconAnchor: [10, 27],
-            popupAnchor: [0, -27]
+            iconSize: [18, 25],
+            iconAnchor: [9, 25],
+            popupAnchor: [0, -25]
         });
     }
 
     function makeSubIcon(regionColor) {
         return L.divIcon({
             className: 'sub-marker',
-            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="14" height="19">
-                <circle cx="9" cy="9" r="7" fill="#D4A76A" stroke="${regionColor}" stroke-width="1.5"/>
-                <circle cx="9" cy="9" r="2.5" fill="#FFF8DC"/>
-                <line x1="9" y1="16" x2="9" y2="22" stroke="${regionColor}" stroke-width="1.5"/>
+            html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 22" width="13" height="18">
+                <circle cx="8" cy="8" r="6" fill="#F5E6D0" stroke="${regionColor}" stroke-width="1.5"/>
+                <circle cx="8" cy="8" r="2" fill="${regionColor}" opacity="0.35"/>
+                <line x1="8" y1="14" x2="8" y2="20" stroke="${regionColor}" stroke-width="1.2" stroke-linecap="round"/>
             </svg>`,
-            iconSize: [14, 19],
-            iconAnchor: [7, 19],
-            popupAnchor: [0, -19]
+            iconSize: [13, 18],
+            iconAnchor: [6.5, 18],
+            popupAnchor: [0, -18]
         });
     }
 
@@ -284,16 +298,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // Museum location marker
     const museumIcon = L.divIcon({
         className: 'museum-marker',
-        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 40" width="32" height="36">
-            <rect x="4" y="16" width="28" height="22" fill="#2E4E2E" stroke="#1a301a" stroke-width="1.5"/>
-            <polygon points="18,4 2,16 34,16" fill="#2E4E2E" stroke="#1a301a" stroke-width="1.5"/>
-            <rect x="10" y="22" width="4" height="8" fill="#FFF8DC" stroke="#1a301a" stroke-width="0.8"/>
-            <rect x="22" y="22" width="4" height="8" fill="#FFF8DC" stroke="#1a301a" stroke-width="0.8"/>
-            <rect x="14" y="26" width="8" height="12" fill="#D2B48C" stroke="#1a301a" stroke-width="0.8"/>
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 38" width="30" height="34">
+            <defs>
+                <filter id="sm" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0.5" dy="1" stdDeviation="1" flood-opacity="0.3"/>
+                </filter>
+            </defs>
+            <g filter="url(#sm)">
+                <rect x="5" y="14" width="24" height="20" rx="1" fill="#2E4E2E" stroke="#1a301a" stroke-width="1.5"/>
+                <polygon points="17,3 3,14 31,14" fill="#3a6b3a" stroke="#1a301a" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="13" y="22" width="8" height="12" rx="0.5" fill="#FFF8DC" opacity="0.6"/>
+                <line x1="17" y1="3" x2="17" y2="14" stroke="#FFF8DC" stroke-width="0.6" opacity="0.3"/>
+            </g>
         </svg>`,
-        iconSize: [32, 36],
-        iconAnchor: [16, 36],
-        popupAnchor: [0, -36]
+        iconSize: [30, 34],
+        iconAnchor: [15, 34],
+        popupAnchor: [0, -34]
     });
 
     // Track all map layers for re-rendering on language switch
