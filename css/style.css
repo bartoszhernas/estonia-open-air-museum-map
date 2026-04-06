@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: #FFF8DC;
+    color: #3B2F1E;
+}
+
+.site-header {
+    background-color: #5C3D2E;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="200" height="200" filter="url(%23n)" opacity="0.08"/></svg>');
+    padding: 1.2rem 2rem;
+    text-align: center;
+    border-bottom: 4px solid #8B4513;
+}
+
+.site-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #FFF8DC;
+    letter-spacing: 0.02em;
+}
+
+.site-header .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #D2B48C;
+    font-style: italic;
+    margin-top: 0.3rem;
+}
+
+#map {
+    width: 100%;
+    height: calc(100vh - 90px);
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    box-shadow: 0 3px 14px rgba(59, 47, 30, 0.3);
+    border: 2px solid #8B4513;
+}
+
+.leaflet-popup-tip {
+    border-top-color: #8B4513;
+}
+
+.building-popup {
+    max-width: 280px;
+    line-height: 1.5;
+}
+
+.building-popup h3 {
+    font-family: 'Playfair Display', serif;
+    color: #5C3D2E;
+    font-size: 1.15rem;
+    margin-bottom: 0.15rem;
+}
+
+.building-popup .name-en {
+    font-size: 0.9rem;
+    color: #8B7355;
+    margin-bottom: 0.5rem;
+}
+
+.building-popup .meta {
+    font-size: 0.85rem;
+    color: #6B5744;
+    margin-bottom: 0.4rem;
+}
+
+.building-popup .meta strong {
+    color: #5C3D2E;
+}
+
+.building-popup .description {
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    color: #3B2F1E;
+}
+
+.building-popup .museum-link {
+    display: inline-block;
+    margin-top: 0.4rem;
+    padding: 0.35rem 0.8rem;
+    background-color: #5C3D2E;
+    color: #FFF8DC;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.building-popup .museum-link:hover {
+    background-color: #8B4513;
+}
