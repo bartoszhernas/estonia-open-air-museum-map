@@ -105,8 +105,8 @@
     "region": "western"
   },
   {
-    "name": "Harjapea talu (Kutsari-Harjapea)",
-    "nameEn": "Harjapea Farm",
+    "name": "Härjapea talu (Kutsari-Härjapea)",
+    "nameEn": "Härjapea Farm",
     "type": "farmhouse",
     "originalLocation": "Kuusalu parish area",
     "county": "Harju County",
@@ -207,8 +207,8 @@
     "name": "Sepa talu",
     "nameEn": "Sepa Farm (Blacksmith's Farm)",
     "type": "blacksmith's farm",
-    "originalLocation": "Palometsa village, Rouge parish, Kasaritsa commune",
-    "county": "Voru County",
+    "originalLocation": "Palometsa village, Rõuge parish, Kasaritsa commune",
+    "county": "Võru County",
     "lat": 57.8097,
     "lng": 27.0953,
     "yearBuilt": "1880s-1890s",
@@ -234,7 +234,7 @@
     "nameEn": "Rusi Farm",
     "type": "farmhouse",
     "originalLocation": "Pugritsa village, Karula parish",
-    "county": "Valga County (historically Voru County)",
+    "county": "Valga County (historically Võru County)",
     "lat": 57.746,
     "lng": 26.228,
     "yearBuilt": "19th century",
@@ -294,7 +294,7 @@
     "nameEn": "Kalma Windmill",
     "type": "Dutch-type windmill",
     "originalLocation": "Kalma village, Torma parish",
-    "county": "Tartu County (historically Jogeva County)",
+    "county": "Tartu County (historically Jõgeva County)",
     "lat": 58.848,
     "lng": 26.702,
     "yearBuilt": "1897",
@@ -316,7 +316,7 @@
     "region": "standalone"
   },
   {
-    "name": "Orgmetsa tuletornipritsunemaja",
+    "name": "Orgmetsa tuletõrjepritsunemaja",
     "nameEn": "Orgmetsa Fire Station",
     "type": "fire station",
     "originalLocation": "Orgmetsa village, Järva-Madise parish",
@@ -329,7 +329,7 @@
     "region": "standalone"
   },
   {
-    "name": "Lau kylapood",
+    "name": "Lau külapood",
     "nameEn": "Lau Village Shop",
     "type": "shop",
     "originalLocation": "Lau village, Juuru parish",
@@ -375,8 +375,8 @@
     "region": "islands"
   },
   {
-    "name": "Juri-Jaagu talu",
-    "nameEn": "Juri-Jaagu Farm",
+    "name": "Jüri-Jaagu talu",
+    "nameEn": "Jüri-Jaagu Farm",
     "type": "tenant farm",
     "originalLocation": "Muhu Island",
     "county": "Saare County",
@@ -466,7 +466,7 @@
     "region": "islands"
   },
   {
-    "name": "Hiiumaa randpuusekalaehoone",
+    "name": "Hiiumaa randpüügikalurihoone",
     "nameEn": "Hiiumaa Itinerant Fishing House",
     "type": "fishing house",
     "originalLocation": "Sarvi village, Audru parish",
@@ -479,7 +479,7 @@
     "region": "islands"
   },
   {
-    "name": "Peipsimaa vene maja (Petshonkini maja)",
+    "name": "Peipsimaa vene maja (Petšonkini maja)",
     "nameEn": "Russian House from Peipus (Pechonkin's House)",
     "type": "dwelling",
     "originalLocation": "Kallaste, Kodavere parish",
