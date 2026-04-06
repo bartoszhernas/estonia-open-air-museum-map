@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const isMain = mainBuildingTypes.has(building.type);
                 const marker = L.marker([building.lat, building.lng], { icon: isMain ? houseIcon : otherIcon })
                     .addTo(map)
-                    .bindPopup(popupContent, { maxWidth: 300 });
+                    .bindPopup(popupContent, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
 
                 markers.push(marker);
 
@@ -170,5 +170,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="description">Rocca al Mare, Tallinn — where all these buildings now stand together.</div>
                 <a class="museum-link" href="https://evm.ee" target="_blank" rel="noopener">Visit Museum Website &rarr;</a>
             </div>
-        `, { maxWidth: 300 });
+        `, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
 });
