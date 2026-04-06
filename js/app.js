@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         maxZoom: 19
     }).addTo(map);
 
-    // Custom house marker icon
+    // Main building icon (farmhouses/dwellings)
     const houseIcon = L.divIcon({
         className: 'house-marker',
         html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 40" width="28" height="35">
@@ -30,6 +30,26 @@ document.addEventListener('DOMContentLoaded', function () {
         iconAnchor: [14, 35],
         popupAnchor: [0, -35]
     });
+
+    // Other building icon (mills, chapel, school, shop, etc.)
+    const otherIcon = L.divIcon({
+        className: 'other-marker',
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" width="20" height="27">
+            <circle cx="12" cy="12" r="10" fill="#C4956A" stroke="#8B6914" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="4" fill="#FFF8DC"/>
+            <line x1="12" y1="22" x2="12" y2="30" stroke="#8B6914" stroke-width="2"/>
+        </svg>`,
+        iconSize: [20, 27],
+        iconAnchor: [10, 27],
+        popupAnchor: [0, -27]
+    });
+
+    // Types that are main buildings (farmer's house / dwelling)
+    const mainBuildingTypes = new Set([
+        'farmhouse', 'cotter dwelling', "blacksmith's farm", "cotter's farm",
+        "fisherman's farm", 'tenant farm', "soldier's homestead", 'dwelling',
+        'apartment building'
+    ]);
 
     // Type labels for display
     const typeLabels = {
@@ -91,7 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 `;
 
-                const marker = L.marker([building.lat, building.lng], { icon: houseIcon })
+                const isMain = mainBuildingTypes.has(building.type);
+                const marker = L.marker([building.lat, building.lng], { icon: isMain ? houseIcon : otherIcon })
                     .addTo(map)
                     .bindPopup(popupContent, { maxWidth: 300 });
 
