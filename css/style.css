@@ -365,6 +365,28 @@ body {
     margin-top: 0.2rem;
 }
 
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: rgba(92, 61, 46, 0.85);
+    color: #D2B48C;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    border-top-left-radius: 4px;
+    z-index: 1000;
+}
+
+.footer a {
+    color: #FFF8DC;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
 /* Warm filter on map tiles */
 .leaflet-tile-pane {
     filter: sepia(15%) saturate(90%) brightness(102%);
