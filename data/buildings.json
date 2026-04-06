@@ -29,11 +29,25 @@
     "type": "farmhouse",
     "originalLocation": "Kullamaa parish",
     "county": "Lääne County",
-    "lat": 58.8789,
-    "lng": 24.0817,
+    "lat": 58.883,
+    "lng": 24.083,
     "yearBuilt": "Early 19th century",
     "description": "A Western Estonian farm with a threshing house and storehouse, transferred to the museum in 1959-1960. The threshing house and storehouse burned in 1984 and were reopened in 1993.",
-    "museumLink": "https://evm.ee/exhibition/western-estonia/sassi-jaani-farm"
+    "museumLink": "https://evm.ee/exhibition/western-estonia/sassi-jaani-farm",
+    "subBuildings": [
+      {
+        "name": "Cattle-shed",
+        "originalLocation": "Althärma farm, Jõeääre village, Märjamaa parish",
+        "lat": 58.816,
+        "lng": 24.455
+      },
+      {
+        "name": "Summer kitchen (conical tent)",
+        "originalLocation": "Kõrvetaga farm, Määra village, Risti parish",
+        "lat": 59.05,
+        "lng": 24.15
+      }
+    ]
   },
   {
     "name": "Kostriaseme talu",
@@ -41,11 +55,37 @@
     "type": "farmhouse",
     "originalLocation": "Kirikla village, Hageri parish",
     "county": "Harju County",
-    "lat": 59.1396,
-    "lng": 24.5267,
+    "lat": 59.142,
+    "lng": 24.546,
     "yearBuilt": "19th century",
     "description": "An average-sized rental farm of about 30 hectares that paid rent to Hageri church manor. Represents the life of tenant farmers in Northern Estonia.",
-    "museumLink": "https://evm.ee/exhibition/western-estonia/kostriaseme-farm"
+    "museumLink": "https://evm.ee/exhibition/western-estonia/kostriaseme-farm",
+    "subBuildings": [
+      {
+        "name": "Two-room storehouse",
+        "originalLocation": "Mõisaääre-Jaagu farm, Kelu village, Kirbla parish",
+        "lat": 58.741,
+        "lng": 23.895
+      },
+      {
+        "name": "Textile storehouse",
+        "originalLocation": "Juhani farm, Aude village, Nissi parish",
+        "lat": 59.167,
+        "lng": 24.25
+      },
+      {
+        "name": "Cattle-shed",
+        "originalLocation": "Mäe farm, Luiste village, Kullamaa parish",
+        "lat": 58.848,
+        "lng": 24.214
+      },
+      {
+        "name": "Summer kitchen",
+        "originalLocation": "Keedelaugu farm, Ahtama village, Risti parish",
+        "lat": 59.172,
+        "lng": 24.12
+      }
+    ]
   },
   {
     "name": "Nuki talu",
@@ -65,11 +105,31 @@
     "type": "farmhouse",
     "originalLocation": "Kuusalu parish area",
     "county": "Harju County",
-    "lat": 59.45,
-    "lng": 25.55,
+    "lat": 59.25,
+    "lng": 27.283,
     "yearBuilt": "Late 19th century (purchased 1892)",
     "description": "An average-sized Viru County farm with an Empire-era dwelling, purchased for 4,000 silver roubles. The interior depicts life in the late 1930s, with outbuildings from Kutsari farm.",
-    "museumLink": "https://evm.ee/exhibition/northern-estonia/harjapea-farm"
+    "museumLink": "https://evm.ee/exhibition/northern-estonia/harjapea-farm",
+    "subBuildings": [
+      {
+        "name": "Storehouse",
+        "originalLocation": "Uhe farm, Vihula village, Haljala parish",
+        "lat": 59.55,
+        "lng": 26.15
+      },
+      {
+        "name": "Cattle-shed",
+        "originalLocation": "Orapere farm, Kõrbse village, Kadrina parish",
+        "lat": 59.35,
+        "lng": 26.15
+      },
+      {
+        "name": "Smoke sauna",
+        "originalLocation": "Punga farm, Koila village, Viru-Nigula parish",
+        "lat": 59.45,
+        "lng": 26.733
+      }
+    ]
   },
   {
     "name": "Pulga talu",
@@ -77,11 +137,43 @@
     "type": "farmhouse",
     "originalLocation": "Kuusalu parish",
     "county": "Harju County",
-    "lat": 59.45,
-    "lng": 25.60,
+    "lat": 59.483,
+    "lng": 25.583,
     "yearBuilt": "19th century",
     "description": "A rental farm characteristic of Northern Estonia, featuring limestone and stone construction including a threshing floor, smithy, and summer kitchen.",
-    "museumLink": "https://evm.ee/exhibition/northern-estonia/pulga-farm"
+    "museumLink": "https://evm.ee/exhibition/northern-estonia/pulga-farm",
+    "subBuildings": [
+      {
+        "name": "Storehouse with intermediate room",
+        "originalLocation": "Sepa farm, Pudisoo village, Kuusalu parish",
+        "lat": 59.517,
+        "lng": 25.567
+      },
+      {
+        "name": "Two-storey storehouse",
+        "originalLocation": "Jaani farm, Suurekõrve village, Kuusalu parish",
+        "lat": 59.44,
+        "lng": 25.44
+      },
+      {
+        "name": "Sauna combined with summer kitchen",
+        "originalLocation": "Lauri farm, Kahala village, Kuusalu parish",
+        "lat": 59.466,
+        "lng": 25.507
+      },
+      {
+        "name": "Smithy",
+        "originalLocation": "Oluva farm, Kahala village, Kuusalu parish",
+        "lat": 59.466,
+        "lng": 25.507
+      },
+      {
+        "name": "Hay shed (2)",
+        "originalLocation": "Kangru farm, Kursi village, Kuusalu parish",
+        "lat": 59.438,
+        "lng": 25.513
+      }
+    ]
   },
   {
     "name": "Aarte talu",
@@ -89,11 +181,19 @@
     "type": "fisherman's farm",
     "originalLocation": "Virve village, Juminda peninsula, Kuusalu parish",
     "county": "Harju County",
-    "lat": 59.5931,
-    "lng": 25.6031,
+    "lat": 59.592,
+    "lng": 25.607,
     "yearBuilt": "Second half of 19th century",
     "description": "A small fisherman's farm from the Juminda peninsula on the northern coast of Estonia, representing the life of coastal fishing communities.",
-    "museumLink": "https://evm.ee/exhibition/northern-estonia/aarte-farm"
+    "museumLink": "https://evm.ee/exhibition/northern-estonia/aarte-farm",
+    "subBuildings": [
+      {
+        "name": "Vergi Net Shed",
+        "originalLocation": "Haljala parish",
+        "lat": 59.58,
+        "lng": 26.1
+      }
+    ]
   },
   {
     "name": "Sepa talu",
@@ -125,11 +225,19 @@
     "type": "farmhouse",
     "originalLocation": "Pugritsa village, Karula parish",
     "county": "Valga County (historically Voru County)",
-    "lat": 57.7524,
-    "lng": 26.3775,
+    "lat": 57.746,
+    "lng": 26.228,
     "yearBuilt": "19th century",
     "description": "A farm of about 36 hectares, birthplace of sculptor Juhan Raudsepp (1896-1984). Buildings brought from Ala-Rusi farm and opened to visitors in 2002.",
-    "museumLink": "https://evm.ee/exhibition/southern-estonia/rusi-farm"
+    "museumLink": "https://evm.ee/exhibition/southern-estonia/rusi-farm",
+    "subBuildings": [
+      {
+        "name": "Storehouse (Ait-tall)",
+        "originalLocation": "Pisu farm, Säre village, Urvaste parish",
+        "lat": 57.829,
+        "lng": 26.575
+      }
+    ]
   },
   {
     "name": "Setu talu (Vanatalo)",
@@ -221,11 +329,31 @@
     "type": "farmhouse",
     "originalLocation": "Leedri village, Kihelkonna parish",
     "county": "Saare County (Saaremaa)",
-    "lat": 58.35,
-    "lng": 22.00,
+    "lat": 58.267,
+    "lng": 22.033,
     "yearBuilt": "Second half of 18th century",
     "description": "A Western Saaremaa farm representing the barter economy system, with about 45 hectares of land including 5 hectares of stony fields. Buildings from Kihelkonna and Mustjala parishes.",
-    "museumLink": "https://evm.ee/exhibition/the-islands/roosta-farm"
+    "museumLink": "https://evm.ee/exhibition/the-islands/roosta-farm",
+    "subBuildings": [
+      {
+        "name": "Cattle-shed",
+        "originalLocation": "Mardi farm, Kõõru village, Mustjala parish, Saaremaa",
+        "lat": 58.4,
+        "lng": 22.167
+      },
+      {
+        "name": "Summer kitchen / Smithy",
+        "originalLocation": "Annuse farm, Karala village, Kihelkonna parish, Saaremaa",
+        "lat": 58.267,
+        "lng": 21.917
+      },
+      {
+        "name": "Sauna",
+        "originalLocation": "Matsi farm, Kugalepa village, Mustjala parish, Saaremaa",
+        "lat": 58.511,
+        "lng": 22.212
+      }
+    ]
   },
   {
     "name": "Juri-Jaagu talu",
@@ -233,11 +361,37 @@
     "type": "tenant farm",
     "originalLocation": "Muhu Island",
     "county": "Saare County",
-    "lat": 58.60,
-    "lng": 23.25,
+    "lat": 58.589,
+    "lng": 23.316,
     "yearBuilt": "Early 20th century",
     "description": "A 20th-century tenant farm from Muhu Island with 34 hectares of land. The family earned money from seasonal work due to poor stony soil and low pastureland yields.",
-    "museumLink": "https://evm.ee/exhibition/the-islands/juri-jaagu-farm"
+    "museumLink": "https://evm.ee/exhibition/the-islands/juri-jaagu-farm",
+    "subBuildings": [
+      {
+        "name": "Storehouse (replica)",
+        "originalLocation": "Salu-Andrus farm, Rootsivere village, Muhu parish",
+        "lat": 58.583,
+        "lng": 23.133
+      },
+      {
+        "name": "Summer kitchen",
+        "originalLocation": "Marjavälja farm, Külasema village, Muhu parish",
+        "lat": 58.633,
+        "lng": 23.183
+      },
+      {
+        "name": "Summer kitchen / Sauna / Cellar",
+        "originalLocation": "Pärdi farm, Mäla village, Muhu parish",
+        "lat": 58.583,
+        "lng": 23.283
+      },
+      {
+        "name": "Cattle-shed",
+        "originalLocation": "Mihkli farm, Lepiku village, Muhu parish",
+        "lat": 58.628,
+        "lng": 23.242
+      }
+    ]
   },
   {
     "name": "Kolga talu",
@@ -245,11 +399,37 @@
     "type": "farmhouse",
     "originalLocation": "Lelu village, Emmaste parish",
     "county": "Hiiu County (Hiiumaa)",
-    "lat": 58.80,
-    "lng": 22.617,
+    "lat": 58.714,
+    "lng": 22.609,
     "yearBuilt": "19th century",
     "description": "A Hiiumaa tenant farm modeled on Pendi farm in Lelu village. Represents the spacious farmyard layout typical of Hiiumaa island farms.",
-    "museumLink": "https://evm.ee/exhibition/the-islands/kolga-farm"
+    "museumLink": "https://evm.ee/exhibition/the-islands/kolga-farm",
+    "subBuildings": [
+      {
+        "name": "Storehouse",
+        "originalLocation": "Aadu farm, Lepiku village, Emmaste parish, Hiiumaa",
+        "lat": 58.698,
+        "lng": 22.541
+      },
+      {
+        "name": "Storehouse / Cattle shed (L-shaped)",
+        "originalLocation": "Läku farm, Haldi village, Emmaste parish, Hiiumaa",
+        "lat": 58.8,
+        "lng": 22.5
+      },
+      {
+        "name": "Cellar",
+        "originalLocation": "Mihkli farm, Tilga village, Emmaste parish, Hiiumaa",
+        "lat": 58.714,
+        "lng": 22.609
+      },
+      {
+        "name": "Smithy",
+        "originalLocation": "Veoma farm, Vahtrepa village, Pühalepa parish, Hiiumaa",
+        "lat": 58.883,
+        "lng": 23.017
+      }
+    ]
   },
   {
     "name": "Vennastekoguduse palvemaja",
@@ -293,7 +473,7 @@
     "type": "apartment building",
     "originalLocation": "Rabi village, Valga district (Järvesalu collective farm)",
     "county": "Valga County",
-    "lat": 58.1120,
+    "lat": 58.112,
     "lng": 26.4383,
     "yearBuilt": "1964",
     "description": "A four-unit Soviet-era silicate brick apartment house built for dairy barn workers. Transported 200 km to the museum in 2019, it depicts rural life from the 1960s through the 2010s.",
@@ -305,10 +485,36 @@
     "type": "soldier's homestead",
     "originalLocation": "Islands region (Saaremaa area)",
     "county": "Saare County",
-    "lat": 58.42,
-    "lng": 22.50,
+    "lat": 58.589,
+    "lng": 23.316,
     "yearBuilt": "19th century",
     "description": "A soldier's homestead apportioned from a state manor, with only 9 hectares of land including 2 hectares of fields. Opened at the museum in 1976.",
-    "museumLink": "https://evm.ee/exhibition/the-islands/jaagu-farm"
+    "museumLink": "https://evm.ee/exhibition/the-islands/jaagu-farm",
+    "subBuildings": [
+      {
+        "name": "Storehouse (replica)",
+        "originalLocation": "Salu-Andrus farm, Rootsivere village, Muhu parish",
+        "lat": 58.583,
+        "lng": 23.133
+      },
+      {
+        "name": "Summer kitchen",
+        "originalLocation": "Marjavälja farm, Külasema village, Muhu parish",
+        "lat": 58.633,
+        "lng": 23.183
+      },
+      {
+        "name": "Summer kitchen / Sauna / Cellar",
+        "originalLocation": "Pärdi farm, Mäla village, Muhu parish",
+        "lat": 58.583,
+        "lng": 23.283
+      },
+      {
+        "name": "Cattle-shed",
+        "originalLocation": "Mihkli farm, Lepiku village, Muhu parish",
+        "lat": 58.628,
+        "lng": 23.242
+      }
+    ]
   }
 ]

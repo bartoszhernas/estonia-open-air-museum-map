@@ -138,6 +138,20 @@ body {
     margin-bottom: 0;
 }
 
+.sub-marker {
+    background: none;
+    border: none;
+}
+
+.sub-marker svg {
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.2));
+    transition: transform 0.2s ease;
+}
+
+.sub-marker:hover svg {
+    transform: scale(1.2);
+}
+
 .other-marker {
     background: none;
     border: none;

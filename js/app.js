@@ -44,6 +44,19 @@ document.addEventListener('DOMContentLoaded', function () {
         popupAnchor: [0, -27]
     });
 
+    // Sub-building icon (smaller, lighter — part of a farm group)
+    const subIcon = L.divIcon({
+        className: 'sub-marker',
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="14" height="19">
+            <circle cx="9" cy="9" r="7" fill="#D4A76A" stroke="#A67B3D" stroke-width="1.2"/>
+            <circle cx="9" cy="9" r="2.5" fill="#FFF8DC"/>
+            <line x1="9" y1="16" x2="9" y2="22" stroke="#A67B3D" stroke-width="1.5"/>
+        </svg>`,
+        iconSize: [14, 19],
+        iconAnchor: [7, 19],
+        popupAnchor: [0, -19]
+    });
+
     // Types that are main buildings (farmer's house / dwelling)
     const mainBuildingTypes = new Set([
         'farmhouse', 'cotter dwelling', "blacksmith's farm", "cotter's farm",
@@ -118,13 +131,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 markers.push(marker);
 
+                // Draw sub-buildings and connecting lines
+                if (building.subBuildings && building.subBuildings.length > 0) {
+                    building.subBuildings.forEach(sub => {
+                        // Draw line from main building to sub-building
+                        L.polyline(
+                            [[building.lat, building.lng], [sub.lat, sub.lng]],
+                            { color: '#8B4513', weight: 2, opacity: 0.5, dashArray: '6, 8' }
+                        ).addTo(map);
+
+                        // Place sub-building marker
+                        const subPopup = `
+                            <div class="building-popup">
+                                <h3>${sub.name}</h3>
+                                <div class="name-en">Part of ${building.nameEn}</div>
+                                <div class="meta"><strong>From:</strong> ${sub.originalLocation}</div>
+                                <div class="description">This building was relocated to join the ${building.nameEn} exhibit at the museum.</div>
+                                <a class="museum-link" href="${building.museumLink}" target="_blank" rel="noopener">
+                                    View Farm on Museum Site &rarr;
+                                </a>
+                            </div>
+                        `;
+
+                        L.marker([sub.lat, sub.lng], { icon: subIcon })
+                            .addTo(map)
+                            .bindPopup(subPopup, { maxWidth: 280, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+                    });
+                }
+
                 // Build sidebar list item
+                const subCount = building.subBuildings ? building.subBuildings.length : 0;
+                const subLabel = subCount > 0 ? ` &middot; ${subCount} linked` : '';
                 const item = document.createElement('div');
                 item.className = 'sidebar-item';
                 item.innerHTML = `
                     <h4>${building.name}</h4>
                     <p class="item-subtitle">${building.nameEn}</p>
-                    <p class="item-meta">${typeLabel} &middot; ${building.county}</p>
+                    <p class="item-meta">${typeLabel} &middot; ${building.county}${subLabel}</p>
                 `;
                 item.addEventListener('click', function () {
                     // Remove active from all items
