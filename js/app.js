@@ -159,12 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
         center: [58.6, 25.0],
         zoom: 7,
         minZoom: 6,
-        maxZoom: 15,
-        maxBounds: [
-            [56.0, 20.0],
-            [61.0, 29.5]
-        ],
-        maxBoundsViscosity: 0.8
+        maxZoom: 15
     });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -272,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="description">${t('museumDesc')}</div>
                     <a class="museum-link" href="https://evm.ee" target="_blank" rel="noopener">${t('visitMuseum')} &rarr;</a>
                 </div>
-            `, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+            `, { maxWidth: 300, autoPanPaddingTopLeft: [50, 10], autoPanPaddingBottomRight: [50, 10] });
         mapLayers.push(museumMarker);
 
         buildingsData.forEach((building, index) => {
@@ -298,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const isMain = mainBuildingTypes.has(building.type);
             const marker = L.marker([building.lat, building.lng], { icon: isMain ? houseIcon : otherIcon })
                 .addTo(map)
-                .bindPopup(popupContent, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+                .bindPopup(popupContent, { maxWidth: 300, autoPanPaddingTopLeft: [50, 10], autoPanPaddingBottomRight: [50, 10] });
             mapLayers.push(marker);
 
             // Draw sub-buildings and connecting lines
@@ -324,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     const subMarker = L.marker([sub.lat, sub.lng], { icon: subIcon })
                         .addTo(map)
-                        .bindPopup(subPopup, { maxWidth: 280, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+                        .bindPopup(subPopup, { maxWidth: 280, autoPanPaddingTopLeft: [50, 10], autoPanPaddingBottomRight: [50, 10] });
                     mapLayers.push(subMarker);
                 });
             }
