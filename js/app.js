@@ -80,4 +80,30 @@ document.addEventListener('DOMContentLoaded', function () {
                     .bindPopup(popupContent, { maxWidth: 300 });
             });
         });
+
+    // Museum location marker
+    const museumIcon = L.divIcon({
+        className: 'museum-marker',
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 40" width="32" height="36">
+            <rect x="4" y="16" width="28" height="22" fill="#2E4E2E" stroke="#1a301a" stroke-width="1.5"/>
+            <polygon points="18,4 2,16 34,16" fill="#2E4E2E" stroke="#1a301a" stroke-width="1.5"/>
+            <rect x="10" y="22" width="4" height="8" fill="#FFF8DC" stroke="#1a301a" stroke-width="0.8"/>
+            <rect x="22" y="22" width="4" height="8" fill="#FFF8DC" stroke="#1a301a" stroke-width="0.8"/>
+            <rect x="14" y="26" width="8" height="12" fill="#D2B48C" stroke="#1a301a" stroke-width="0.8"/>
+        </svg>`,
+        iconSize: [32, 36],
+        iconAnchor: [16, 36],
+        popupAnchor: [0, -36]
+    });
+
+    L.marker([59.4312, 24.6354], { icon: museumIcon })
+        .addTo(map)
+        .bindPopup(`
+            <div class="building-popup">
+                <h3>Eesti Vabaõhumuuseum</h3>
+                <div class="name-en">Estonian Open Air Museum</div>
+                <div class="description">Rocca al Mare, Tallinn — where all 27 buildings now stand together.</div>
+                <a class="museum-link" href="https://evm.ee" target="_blank" rel="noopener">Visit Museum Website &rarr;</a>
+            </div>
+        `, { maxWidth: 300 });
 });
