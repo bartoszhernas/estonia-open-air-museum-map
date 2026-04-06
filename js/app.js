@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="building-popup">
                 <h3>Eesti Vabaõhumuuseum</h3>
                 <div class="name-en">Estonian Open Air Museum</div>
-                <div class="description">Rocca al Mare, Tallinn — where all 27 buildings now stand together.</div>
+                <div class="description">Rocca al Mare, Tallinn — where all these buildings now stand together.</div>
                 <a class="museum-link" href="https://evm.ee" target="_blank" rel="noopener">Visit Museum Website &rarr;</a>
             </div>
         `, { maxWidth: 300 });
