@@ -30,4 +30,54 @@ document.addEventListener('DOMContentLoaded', function () {
         iconAnchor: [14, 35],
         popupAnchor: [0, -35]
     });
+
+    // Type labels for display
+    const typeLabels = {
+        chapel: 'Chapel',
+        inn: 'Inn',
+        farmhouse: 'Farmhouse',
+        'cotter dwelling': 'Cotter Dwelling',
+        "blacksmith's farm": "Blacksmith's Farm",
+        "cotter's farm": "Cotter's Farm",
+        "fisherman's farm": "Fisherman's Farm",
+        'post windmill': 'Post Windmill',
+        watermill: 'Watermill',
+        'Dutch-type windmill': 'Dutch Windmill',
+        school: 'School',
+        'fire station': 'Fire Station',
+        shop: 'Village Shop',
+        'tenant farm': 'Tenant Farm',
+        'prayer house': 'Prayer House',
+        'fishing house': 'Fishing House',
+        dwelling: 'Dwelling',
+        'apartment building': 'Apartment Building',
+        "soldier's homestead": "Soldier's Homestead"
+    };
+
+    // Load building data
+    fetch('data/buildings.json')
+        .then(response => response.json())
+        .then(buildings => {
+            buildings.forEach(building => {
+                const typeLabel = typeLabels[building.type] || building.type;
+                const popupContent = `
+                    <div class="building-popup">
+                        <h3>${building.name}</h3>
+                        <div class="name-en">${building.nameEn}</div>
+                        <div class="meta"><strong>Type:</strong> ${typeLabel}</div>
+                        <div class="meta"><strong>Built:</strong> ${building.yearBuilt}</div>
+                        <div class="meta"><strong>From:</strong> ${building.originalLocation}</div>
+                        <div class="meta"><strong>County:</strong> ${building.county}</div>
+                        <div class="description">${building.description}</div>
+                        <a class="museum-link" href="${building.museumLink}" target="_blank" rel="noopener">
+                            View on Museum Site &rarr;
+                        </a>
+                    </div>
+                `;
+
+                L.marker([building.lat, building.lng], { icon: houseIcon })
+                    .addTo(map)
+                    .bindPopup(popupContent, { maxWidth: 300 });
+            });
+        });
 });
