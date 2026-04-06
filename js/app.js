@@ -1,4 +1,96 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    // ── i18n ──
+    const translations = {
+        en: {
+            title: 'Estonian Open Air Museum',
+            subtitle: 'Where the buildings came from',
+            buildings: 'Buildings',
+            legendFarm: 'Farm / dwelling',
+            legendOther: 'Other building (mill, chapel, school...)',
+            legendSub: 'Sub-building (linked to a farm)',
+            legendLine: 'Same farm exhibit',
+            legendMuseum: 'Open Air Museum (Tallinn)',
+            type: 'Type',
+            built: 'Built',
+            from: 'From',
+            county: 'County',
+            viewMuseum: 'View on Museum Site',
+            viewFarm: 'View Farm on Museum Site',
+            visitMuseum: 'Visit Museum Website',
+            partOf: 'Part of',
+            relocatedTo: 'This building was relocated to join the',
+            exhibitAt: 'exhibit at the museum.',
+            museumDesc: 'Rocca al Mare, Tallinn — where all these buildings now stand together.',
+            linked: 'linked',
+            langLabel: 'ET',
+            pageTitle: 'Estonian Open Air Museum — Where They Came From'
+        },
+        et: {
+            title: 'Eesti Vabaõhumuuseum',
+            subtitle: 'Kust hooned pärit on',
+            buildings: 'Hooned',
+            legendFarm: 'Talu / elamu',
+            legendOther: 'Muu hoone (veski, kabel, kool...)',
+            legendSub: 'Kõrvalhoone (seotud taluga)',
+            legendLine: 'Sama talu eksponaat',
+            legendMuseum: 'Vabaõhumuuseum (Tallinn)',
+            type: 'Tüüp',
+            built: 'Ehitatud',
+            from: 'Päritolu',
+            county: 'Maakond',
+            viewMuseum: 'Vaata muuseumi lehel',
+            viewFarm: 'Vaata talu muuseumi lehel',
+            visitMuseum: 'Külasta muuseumi veebilehte',
+            partOf: 'Osa talust',
+            relocatedTo: 'See hoone toodi muuseumisse, et liituda',
+            exhibitAt: 'ekspositsiooniga.',
+            museumDesc: 'Rocca al Mare, Tallinn — kus kõik need hooned nüüd koos seisavad.',
+            linked: 'seotud',
+            langLabel: 'EN',
+            pageTitle: 'Eesti Vabaõhumuuseum — Kust hooned pärit on'
+        }
+    };
+
+    // Type labels per language
+    const typeLabelsI18n = {
+        en: {
+            chapel: 'Chapel', inn: 'Inn', farmhouse: 'Farmhouse',
+            'cotter dwelling': 'Cotter Dwelling', "blacksmith's farm": "Blacksmith's Farm",
+            "cotter's farm": "Cotter's Farm", "fisherman's farm": "Fisherman's Farm",
+            'post windmill': 'Post Windmill', watermill: 'Watermill',
+            'Dutch-type windmill': 'Dutch Windmill', school: 'School',
+            'fire station': 'Fire Station', shop: 'Village Shop',
+            'tenant farm': 'Tenant Farm', 'prayer house': 'Prayer House',
+            'fishing house': 'Fishing House', dwelling: 'Dwelling',
+            'apartment building': 'Apartment Building', "soldier's homestead": "Soldier's Homestead"
+        },
+        et: {
+            chapel: 'Kabel', inn: 'Kõrts', farmhouse: 'Talumaja',
+            'cotter dwelling': 'Vabadiku elamu', "blacksmith's farm": "Sepa talu",
+            "cotter's farm": "Vabadiku talu", "fisherman's farm": "Kaluritalu",
+            'post windmill': 'Pukktuulik', watermill: 'Vesiveski',
+            'Dutch-type windmill': 'Hollandi tuulik', school: 'Kool',
+            'fire station': 'Tuletõrjemaja', shop: 'Külapood',
+            'tenant farm': 'Renditalu', 'prayer house': 'Palvemaja',
+            'fishing house': 'Kalurielamu', dwelling: 'Elamu',
+            'apartment building': 'Korterelamu', "soldier's homestead": "Soldatitalu"
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'en';
+
+    function t(key) { return translations[currentLang][key] || key; }
+    function typeLabel(type) { return typeLabelsI18n[currentLang][type] || type; }
+
+    function updateStaticUI() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            el.textContent = t(el.dataset.i18n);
+        });
+        document.getElementById('langToggle').querySelector('.lang-flag').textContent = t('langLabel');
+        document.title = t('pageTitle');
+        document.documentElement.lang = currentLang;
+    }
     const map = L.map('map', {
         center: [58.6, 25.0],
         zoom: 7,
@@ -64,29 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'apartment building'
     ]);
 
-    // Type labels for display
-    const typeLabels = {
-        chapel: 'Chapel',
-        inn: 'Inn',
-        farmhouse: 'Farmhouse',
-        'cotter dwelling': 'Cotter Dwelling',
-        "blacksmith's farm": "Blacksmith's Farm",
-        "cotter's farm": "Cotter's Farm",
-        "fisherman's farm": "Fisherman's Farm",
-        'post windmill': 'Post Windmill',
-        watermill: 'Watermill',
-        'Dutch-type windmill': 'Dutch Windmill',
-        school: 'School',
-        'fire station': 'Fire Station',
-        shop: 'Village Shop',
-        'tenant farm': 'Tenant Farm',
-        'prayer house': 'Prayer House',
-        'fishing house': 'Fishing House',
-        dwelling: 'Dwelling',
-        'apartment building': 'Apartment Building',
-        "soldier's homestead": "Soldier's Homestead"
-    };
-
     // Sidebar elements
     const sidebar = document.getElementById('sidebar');
     const sidebarList = document.getElementById('sidebarList');
@@ -100,94 +169,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     listToggle.addEventListener('click', toggleSidebar);
     sidebarClose.addEventListener('click', toggleSidebar);
-
-    // Load building data
-    fetch('data/buildings.json')
-        .then(response => response.json())
-        .then(buildings => {
-            const markers = [];
-
-            buildings.forEach((building, index) => {
-                const typeLabel = typeLabels[building.type] || building.type;
-                const popupContent = `
-                    <div class="building-popup">
-                        <h3>${building.name}</h3>
-                        <div class="name-en">${building.nameEn}</div>
-                        <div class="meta"><strong>Type:</strong> ${typeLabel}</div>
-                        <div class="meta"><strong>Built:</strong> ${building.yearBuilt}</div>
-                        <div class="meta"><strong>From:</strong> ${building.originalLocation}</div>
-                        <div class="meta"><strong>County:</strong> ${building.county}</div>
-                        <div class="description">${building.description}</div>
-                        <a class="museum-link" href="${building.museumLink}" target="_blank" rel="noopener">
-                            View on Museum Site &rarr;
-                        </a>
-                    </div>
-                `;
-
-                const isMain = mainBuildingTypes.has(building.type);
-                const marker = L.marker([building.lat, building.lng], { icon: isMain ? houseIcon : otherIcon })
-                    .addTo(map)
-                    .bindPopup(popupContent, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
-
-                markers.push(marker);
-
-                // Draw sub-buildings and connecting lines
-                if (building.subBuildings && building.subBuildings.length > 0) {
-                    building.subBuildings.forEach(sub => {
-                        // Draw line from main building to sub-building
-                        L.polyline(
-                            [[building.lat, building.lng], [sub.lat, sub.lng]],
-                            { color: '#8B4513', weight: 2, opacity: 0.5, dashArray: '6, 8' }
-                        ).addTo(map);
-
-                        // Place sub-building marker
-                        const subPopup = `
-                            <div class="building-popup">
-                                <h3>${sub.name}</h3>
-                                <div class="name-en">Part of ${building.nameEn}</div>
-                                <div class="meta"><strong>From:</strong> ${sub.originalLocation}</div>
-                                <div class="description">This building was relocated to join the ${building.nameEn} exhibit at the museum.</div>
-                                <a class="museum-link" href="${building.museumLink}" target="_blank" rel="noopener">
-                                    View Farm on Museum Site &rarr;
-                                </a>
-                            </div>
-                        `;
-
-                        L.marker([sub.lat, sub.lng], { icon: subIcon })
-                            .addTo(map)
-                            .bindPopup(subPopup, { maxWidth: 280, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
-                    });
-                }
-
-                // Build sidebar list item
-                const subCount = building.subBuildings ? building.subBuildings.length : 0;
-                const subLabel = subCount > 0 ? ` &middot; ${subCount} linked` : '';
-                const item = document.createElement('div');
-                item.className = 'sidebar-item';
-                item.innerHTML = `
-                    <h4>${building.name}</h4>
-                    <p class="item-subtitle">${building.nameEn}</p>
-                    <p class="item-meta">${typeLabel} &middot; ${building.county}${subLabel}</p>
-                `;
-                item.addEventListener('click', function () {
-                    // Remove active from all items
-                    sidebarList.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
-                    item.classList.add('active');
-
-                    // Pan to marker and open popup
-                    map.setView([building.lat, building.lng], 10, { animate: true });
-                    marker.openPopup();
-
-                    // Close sidebar on mobile
-                    if (window.innerWidth <= 600) {
-                        sidebar.classList.remove('open');
-                        listToggle.classList.remove('active');
-                    }
-                });
-
-                sidebarList.appendChild(item);
-            });
-        });
 
     // Museum location marker
     const museumIcon = L.divIcon({
@@ -204,14 +185,126 @@ document.addEventListener('DOMContentLoaded', function () {
         popupAnchor: [0, -36]
     });
 
-    L.marker([59.4312, 24.6354], { icon: museumIcon })
-        .addTo(map)
-        .bindPopup(`
-            <div class="building-popup">
-                <h3>Eesti Vabaõhumuuseum</h3>
-                <div class="name-en">Estonian Open Air Museum</div>
-                <div class="description">Rocca al Mare, Tallinn — where all these buildings now stand together.</div>
-                <a class="museum-link" href="https://evm.ee" target="_blank" rel="noopener">Visit Museum Website &rarr;</a>
-            </div>
-        `, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+    // Track all map layers for re-rendering on language switch
+    let mapLayers = [];
+    let buildingsData = null;
+
+    function clearMapLayers() {
+        mapLayers.forEach(layer => map.removeLayer(layer));
+        mapLayers = [];
+    }
+
+    function renderBuildings() {
+        clearMapLayers();
+        sidebarList.innerHTML = '';
+
+        // Museum marker
+        const museumMarker = L.marker([59.4312, 24.6354], { icon: museumIcon })
+            .addTo(map)
+            .bindPopup(`
+                <div class="building-popup">
+                    <h3>Eesti Vabaõhumuuseum</h3>
+                    <div class="name-en">Estonian Open Air Museum</div>
+                    <div class="description">${t('museumDesc')}</div>
+                    <a class="museum-link" href="https://evm.ee" target="_blank" rel="noopener">${t('visitMuseum')} &rarr;</a>
+                </div>
+            `, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+        mapLayers.push(museumMarker);
+
+        buildingsData.forEach((building, index) => {
+            const tl = typeLabel(building.type);
+            const displayName = currentLang === 'et' ? building.name : building.nameEn;
+            const secondaryName = currentLang === 'et' ? building.nameEn : building.name;
+
+            const popupContent = `
+                <div class="building-popup">
+                    <h3>${displayName}</h3>
+                    <div class="name-en">${secondaryName}</div>
+                    <div class="meta"><strong>${t('type')}:</strong> ${tl}</div>
+                    <div class="meta"><strong>${t('built')}:</strong> ${building.yearBuilt}</div>
+                    <div class="meta"><strong>${t('from')}:</strong> ${building.originalLocation}</div>
+                    <div class="meta"><strong>${t('county')}:</strong> ${building.county}</div>
+                    <div class="description">${building.description}</div>
+                    <a class="museum-link" href="${building.museumLink}" target="_blank" rel="noopener">
+                        ${t('viewMuseum')} &rarr;
+                    </a>
+                </div>
+            `;
+
+            const isMain = mainBuildingTypes.has(building.type);
+            const marker = L.marker([building.lat, building.lng], { icon: isMain ? houseIcon : otherIcon })
+                .addTo(map)
+                .bindPopup(popupContent, { maxWidth: 300, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+            mapLayers.push(marker);
+
+            // Draw sub-buildings and connecting lines
+            if (building.subBuildings && building.subBuildings.length > 0) {
+                building.subBuildings.forEach(sub => {
+                    const line = L.polyline(
+                        [[building.lat, building.lng], [sub.lat, sub.lng]],
+                        { color: '#8B4513', weight: 2, opacity: 0.5, dashArray: '6, 8' }
+                    ).addTo(map);
+                    mapLayers.push(line);
+
+                    const subPopup = `
+                        <div class="building-popup">
+                            <h3>${sub.name}</h3>
+                            <div class="name-en">${t('partOf')} ${displayName}</div>
+                            <div class="meta"><strong>${t('from')}:</strong> ${sub.originalLocation}</div>
+                            <div class="description">${t('relocatedTo')} ${displayName} ${t('exhibitAt')}</div>
+                            <a class="museum-link" href="${building.museumLink}" target="_blank" rel="noopener">
+                                ${t('viewFarm')} &rarr;
+                            </a>
+                        </div>
+                    `;
+
+                    const subMarker = L.marker([sub.lat, sub.lng], { icon: subIcon })
+                        .addTo(map)
+                        .bindPopup(subPopup, { maxWidth: 280, autoPanPaddingTopLeft: [50, 100], autoPanPaddingBottomRight: [50, 50] });
+                    mapLayers.push(subMarker);
+                });
+            }
+
+            // Sidebar list item
+            const subCount = building.subBuildings ? building.subBuildings.length : 0;
+            const subLabel = subCount > 0 ? ` &middot; ${subCount} ${t('linked')}` : '';
+            const item = document.createElement('div');
+            item.className = 'sidebar-item';
+            item.innerHTML = `
+                <h4>${displayName}</h4>
+                <p class="item-subtitle">${secondaryName}</p>
+                <p class="item-meta">${tl} &middot; ${building.county}${subLabel}</p>
+            `;
+            item.addEventListener('click', function () {
+                sidebarList.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+                item.classList.add('active');
+                map.setView([building.lat, building.lng], 10, { animate: true });
+                marker.openPopup();
+                if (window.innerWidth <= 600) {
+                    sidebar.classList.remove('open');
+                    listToggle.classList.remove('active');
+                }
+            });
+            sidebarList.appendChild(item);
+        });
+    }
+
+    // Language toggle
+    document.getElementById('langToggle').addEventListener('click', function () {
+        currentLang = currentLang === 'en' ? 'et' : 'en';
+        localStorage.setItem('lang', currentLang);
+        updateStaticUI();
+        if (buildingsData) renderBuildings();
+    });
+
+    // Initial UI
+    updateStaticUI();
+
+    // Load building data
+    fetch('data/buildings.json')
+        .then(response => response.json())
+        .then(buildings => {
+            buildingsData = buildings;
+            renderBuildings();
+        });
 });
